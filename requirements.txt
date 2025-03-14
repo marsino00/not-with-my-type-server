@@ -1,3 +1,4 @@
-Flask
-flask-cors
-fonttools
+Flask==2.2.2
+flask-cors==3.0.10
+fonttools==4.39.3
+gunicorn==20.1.0

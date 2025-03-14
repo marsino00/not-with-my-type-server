@@ -33,6 +33,12 @@ def after_request(response):
     response.headers.add('Access-Control-Allow-Methods', 'GET,POST,OPTIONS')
     return response
 
+@app.errorhandler(Exception)
+def handle_exception(e):
+    logger.error(f"Unhandled Exception: {e}")
+    response = jsonify({'error': 'Internal Server Error', 'message': str(e)})
+    response.status_code = 500
+    return response
 
 @app.route('/upload', methods=['POST'])
 def upload_font():
