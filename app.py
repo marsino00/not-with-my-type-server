@@ -26,6 +26,14 @@ os.makedirs(PROCESSED_FOLDER, exist_ok=True)
 def index():
     return render_template('index.html')  # Opcional, si tienes una plantilla
 
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,POST,OPTIONS')
+    return response
+
+
 @app.route('/upload', methods=['POST'])
 def upload_font():
     if 'fontFile' not in request.files:
