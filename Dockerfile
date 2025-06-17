@@ -15,4 +15,4 @@ RUN pip cache purge \
 COPY . .
 
 # 6. Run Procfile command (you can also just do CMD directly)
-CMD ["gunicorn", "app:app", "-b", "0.0.0.0:8080"]
+CMD ["bash", "-lc", "gunicorn app:app -b 0.0.0.0:$PORT"]
